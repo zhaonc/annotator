@@ -48,7 +48,7 @@ describe("storage.HttpStorage", function () {
         assert.equal(lastReq.url, "/store/annotations");
     });
 
-    it("update URL should be /store/annotations/{id} by default", function () {
+    it("update URL should be /store/annotations/idComment by default", function () {
         store.update({
             text: "Donkeys on giraffes",
             id: 123
@@ -56,7 +56,7 @@ describe("storage.HttpStorage", function () {
         assert.equal(lastReq.url, "/store/annotations/123");
     });
 
-    it("delete URL should be /store/annotations/{id} by default", function () {
+    it("delete URL should be /store/annotations/idComment by default", function () {
         store["delete"]({
             text: "Donkeys on giraffes",
             id: 123
@@ -67,8 +67,8 @@ describe("storage.HttpStorage", function () {
     it("should request custom URLs as specified by its options", function () {
         store.options.prefix = '/some/prefix';
         store.options.urls.create = '/createMe';
-        store.options.urls.update = '/{id}/updateMe';
-        store.options.urls.destroy = '/{id}/destroyMe';
+        store.options.urls.update = '/idComment/updateMe';
+        store.options.urls.destroy = '/idComment/destroyMe';
 
         store.create({
             text: "Donkeys on giraffes"
@@ -91,8 +91,8 @@ describe("storage.HttpStorage", function () {
     it("should generate URLs correctly with an empty prefix", function () {
         store.options.prefix = '';
         store.options.urls.create = '/createMe';
-        store.options.urls.update = '/{id}/updateMe';
-        store.options.urls.destroy = '/{id}/destroyMe';
+        store.options.urls.update = '/idComment/updateMe';
+        store.options.urls.destroy = '/idComment/destroyMe';
 
         store.create({
             text: "Donkeys on giraffes"
@@ -114,8 +114,8 @@ describe("storage.HttpStorage", function () {
 
     it("should generate URLs with substitution markers in query strings", function () {
         store.options.prefix = '/some/prefix';
-        store.options.urls.update = '/update?foo&id={id}';
-        store.options.urls.destroy = '/delete?id={id}&foo';
+        store.options.urls.update = '/update?foo&id=idComment';
+        store.options.urls.destroy = '/delete?id=idComment&foo';
 
         store.update({
             text: "Donkeys on giraffes",

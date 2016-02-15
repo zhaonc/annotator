@@ -350,8 +350,8 @@ HttpStorage.prototype._urlFor = function (action, id) {
     }
 
     url += this.options.urls[action];
-    // If there's an '{id}' in the URL, then fill in the ID.
-    url = url.replace(/\{id\}/, id);
+    // If there's an 'id' in the URL, then fill in the ID.
+    url = url.replace(/idComment/, id);
     return url;
 };
 
@@ -476,15 +476,15 @@ HttpStorage.options = {
      *
      *      {
      *          create: '/annotations',
-     *          update: '/annotations/{id}',
-     *          destroy: '/annotations/{id}',
+     *          update: '/annotations/idComment',
+     *          destroy: '/annotations/idComment',
      *          search: '/search'
      *      }
      */
     urls: {
         create: '/annotations',
-        update: '/annotations/{id}',
-        destroy: '/annotations/{id}',
+        update: '/annotations/idComment',
+        destroy: '/annotations/idComment',
         search: '/search'
     }
 };
