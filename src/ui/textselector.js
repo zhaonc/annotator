@@ -39,6 +39,7 @@ function TextSelector(element, options) {
 
         $(this.document.body)
             .on("touchend." + TEXTSELECTOR_NS, function (e) {
+                e.preventDefault();
                 self._checkForEndSelection(e);
             });
     } else {
